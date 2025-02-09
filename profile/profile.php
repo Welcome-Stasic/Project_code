@@ -1,7 +1,3 @@
-<?php
-include("db/Users.php")
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
