@@ -1,3 +1,6 @@
+<?php
+include("db/authUsers.php")
+?>
 <html lang="ru">
 
 <head>
@@ -31,6 +34,3 @@
 </body>
 
 </html>
-<?php
-include("db/authUsers.php")
-?>
