@@ -15,7 +15,7 @@
             <h1>
                 Регистрация
             </h1>
-            <form action="index.php" method="GET">
+            <form action="registration.php" method="GET">
                 <div class="form-group">
                     <label for="username">Имя</label>
                     <input type="text" name="username" required>

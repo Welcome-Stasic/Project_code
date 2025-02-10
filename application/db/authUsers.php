@@ -2,21 +2,21 @@
 include("db/db.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-  $email = !empty($_GET['email']) ? $conn->real_escape_string(trim($_GET['email'])) : null;
-  $password = !empty($_GET['password']) ? $conn->real_escape_string(trim($_GET['password'])) : null;
+    $email = !empty($_GET['email']) ? $conn->real_escape_string(trim($_GET['email'])) : null;
+    $password = !empty($_GET['password']) ? $conn->real_escape_string(trim($_GET['password'])) : null;
 
-  $query = "SELECT * FROM users WHERE email = '$email'";
-  $result = $conn->query($query);
+    $query = "SELECT * FROM users WHERE email = '$email'";
+    $result = $conn->query($query);
 
-  if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-    if (password_verify($password, $user['password'])) {
-      setcookie("username", $user['name'], time() + (86400 * 30), "/"); // 30 дней
-      setcookie("user_email", $user['email'], time() + (86400 * 30), "/"); // 30 дней
+        if (password_verify($password, $user['password'])) {
+            setcookie("username", $user['name'], time() + (86400 * 30), "/"); // 30 дней
+            setcookie("user_email", $user['email'], time() + (86400 * 30), "/"); // 30 дней
 
-      $alert_success = "Добро пожаловать, " . htmlspecialchars($user['name']) . "!";
-      echo "<script>
+            $alert_success = "Добро пожаловать, " . htmlspecialchars($user['name']) . "!";
+            echo "<script>
             let timerInterval;
             Swal.fire({
                 icon: 'success',
@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 }
             });
             </script>";
-    } else {
-      echo "<script>
+        } else {
+            echo "<script>
             Swal.fire({
                 title: 'Ой, Неверный пароль(',
                 icon: 'error',
@@ -56,17 +56,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 }
             });
             </script>";
-    }
-  } else {
-    echo "<script>
+        }
+    } else {
+        echo "<script>
         Swal.fire({
             icon: 'error',
             title: 'Ооой...',
             text: 'Пользователь не найден!',
-            footer: '<a href='../index.html'>Похоже пора арегистрироваться</a>',
+            footer: '<a href='../registration.php'>Похоже пора арегистрироваться</a>',
         });
         </script>";
-  }
+    }
 }
 
 $conn->close();

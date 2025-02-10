@@ -1,6 +1,3 @@
-<?php
-include("db/authUsers.php")
-?>
 <html lang="ru">
 
 <head>
@@ -28,9 +25,12 @@ include("db/authUsers.php")
             <button type="submit">Авторизоваться</button>
         </form>
         <div class="auth-switch">
-            <span class="switch-text">Нет аккаунта? <a href="index.php">Зарегистрироваться</a></span>
+            <span class="switch-text">Нет аккаунта? <a href="registration.php">Зарегистрироваться</a></span>
         </div>
     </div>
 </body>
 
 </html>
+<?php
+include("db/authUsers.php")
+?>
