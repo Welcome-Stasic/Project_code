@@ -6,7 +6,7 @@ if (!isset($_COOKIE['username'])) {
     exit;
 }
 
-echo "Добро пожаловать на ваш профиль!" . htmlspecialchars($_COOKIE['username']);
+echo "Добро пожаловать на ваш профиль, " . htmlspecialchars($_COOKIE['username']) . "!";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,8 @@ echo "Добро пожаловать на ваш профиль!" . htmlspecial
 </head>
 
 <body>
-    <a href="../application/auth.php">Выйти с аккаунта</a>
+    <a href="edit.php">Редактировать профиль</a>
+    <a href="../application/out.php">Выйти с аккаунта</a>
 </body>
 
 </html>

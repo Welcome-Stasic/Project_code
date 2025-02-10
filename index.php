@@ -1,3 +1,12 @@
+<?php
+if (isset($_COOKIE['username'])) {
+    header("Location: profile/profile.php");
+    exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

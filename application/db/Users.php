@@ -7,7 +7,6 @@ $name = !empty($_GET['username']) ? $conn->real_escape_string(trim($_GET['userna
 $email = !empty($_GET['email']) ? $conn->real_escape_string(trim($_GET['email'])) : null;
 $password = !empty($_GET['password']) ? $conn->real_escape_string(trim($_GET['password'])) : null;
 $role = isset($_GET['role']) && in_array($_GET['role'], ['teacher', 'student']) ? $conn->real_escape_string(trim($_GET['role'])) : 'student';
-$admin = $is_admin ? 1 : 0;
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   echo "<script>
