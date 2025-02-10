@@ -1,10 +1,13 @@
 <?php
 include("db/db.php");
 
+$is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+
 $name = !empty($_GET['username']) ? $conn->real_escape_string(trim($_GET['username'])) : null;
 $email = !empty($_GET['email']) ? $conn->real_escape_string(trim($_GET['email'])) : null;
 $password = !empty($_GET['password']) ? $conn->real_escape_string(trim($_GET['password'])) : null;
 $role = isset($_GET['role']) && in_array($_GET['role'], ['teacher', 'student']) ? $conn->real_escape_string(trim($_GET['role'])) : 'student';
+$admin = $is_admin ? 1 : 0;
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   echo "<script>
@@ -31,7 +34,7 @@ if ($result_check_email->num_rows > 0) {
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-$query = "INSERT INTO users (name, email, password, created_at, role) VALUES ('$name', '$email', '$hashed_password', NOW(), '$role')";
+$query = "INSERT INTO users (name, email, password, created_at, role, admin) VALUES ('$name', '$email', '$hashed_password', NOW(), '$role', $admin)";
 
 if ($conn->query($query)) {
   $user_id = $conn->insert_id;
@@ -40,6 +43,7 @@ if ($conn->query($query)) {
   setcookie('user_name', $name, time() + (86400 * 30), "/"); // 30 дней
   setcookie('user_email', $email, time() + (86400 * 30), "/"); // 30 дней
   setcookie('user_role', $role, time() + (86400 * 30), "/"); // 30 дней
+  setcookie('user_admin', $admin, time() + (86400 * 30), "/"); // 30 дней
 
   echo "<script>
     let timerInterval;

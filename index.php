@@ -10,6 +10,7 @@
 <body>
     <a href="application/registration.php">Регистрация</a>
     <a href="application/auth.php">Авторизация</a>
+    <a href="application/admin.php">Вы админ?</a>
 </body>
 
 </html>

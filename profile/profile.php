@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_COOKIE['username'])) {
+    header("Location: ../application/auth.php");
+    exit;
+}
+
+echo "Добро пожаловать на ваш профиль!";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,13 +18,6 @@
 </head>
 
 <body>
-    <H1>
-        Профиль пользователя
-    </H1>
-    <?php
-    echo htmlspecialchars($user['name']);
-
-    ?>
 </body>
 
 </html>
