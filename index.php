@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <a href="application/index.php">Регистрация</a>
-    <a href="application/registration.php">Авторизация</a>
+    <a href="application/registration.php">Регистрация</a>
+    <a href="application/auth.php">Авторизация</a>
 </body>
 
 </html>
