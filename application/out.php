@@ -1,6 +1,11 @@
 <?php
 session_start();
-setcookie("username", "", time() - 10000, '/');
 session_unset();
 session_destroy();
-header('Location: auth.php');
+if (!isset($_COOKIE['username'])) {
+    header("Location: auth.php");
+    exit;
+} else {
+    setcookie("username", "", time() - 10000, '/');
+    header('Location: auth.php');
+}
