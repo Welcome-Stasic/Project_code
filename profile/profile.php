@@ -1,4 +1,5 @@
 <?php
+include('Users.php');
 session_start();
 
 if (!isset($_COOKIE['username'])) {
@@ -6,7 +7,7 @@ if (!isset($_COOKIE['username'])) {
     exit;
 }
 
-echo "Добро пожаловать на ваш профиль, " . htmlspecialchars($_COOKIE['username']) . "!";
+echo "<h1>Добро пожаловать на ваш профиль, " . htmlspecialchars($_COOKIE['username']) . " " . htmlspecialchars($_COOKIE['user_surname']) . "!</h1>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

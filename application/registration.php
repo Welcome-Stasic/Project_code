@@ -21,6 +21,10 @@
                     <input type="text" name="username" required>
                 </div>
                 <div class="form-group">
+                    <label for="surname">Фамилия</label>
+                    <input type="text" name="surname" required>
+                </div>
+                <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" required>
                 </div>
