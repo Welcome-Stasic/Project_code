@@ -1,12 +1,10 @@
 <?php
-include('Users.php');
 session_start();
 
 if (!isset($_COOKIE['username'])) {
     header("Location: ../application/auth.php");
     exit;
 }
-
 echo "<h1>Добро пожаловать на ваш профиль, " . htmlspecialchars($_COOKIE['username']) . " " . htmlspecialchars($_COOKIE['user_surname']) . "!</h1>";
 ?>
 <!DOCTYPE html>
@@ -19,8 +17,22 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
 </head>
 
 <body>
-    <a href="edit.php">Редактировать профиль</a>
-    <a href="../application/out.php">Выйти с аккаунта</a>
+    <form action="edit.php">
+        <label>
+            <button href="edit.php">Редактировать профиль</button>
+        </label>
+    </form>
+    <form action="../application/out.php">
+        <label>
+            <button href="../application/out.php">Выйти с аккаунта</button>
+        </label>
+    </form>
+    <form action="members.php">
+        <label>
+            <button href="members.php">Найти людей</button>
+        </label>
+    </form>
+
 </body>
 
 </html>

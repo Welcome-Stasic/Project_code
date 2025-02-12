@@ -17,8 +17,16 @@ if (isset($_COOKIE['username'])) {
 </head>
 
 <body>
-    <a href="application/registration.php">Регистрация</a>
-    <a href="application/auth.php">Авторизация</a>
+    <form action="application/registration.php">
+        <label for="registation">
+            <button href="application/registration.php">Регистрация</button>
+        </label>
+    </form>
+    <form action="application/auth.php">
+        <label for="auth">
+            <button href="application/auth.php">Авторизация</button>
+        </label>
+    </form>
 </body>
 
 </html>
