@@ -29,7 +29,7 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
     </form>
     <form action="members.php">
         <label>
-            <button href="members.php">Найти людей</button>
+            <button href="members.php">Найти друзей</button>
         </label>
     </form>
 
