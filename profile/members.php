@@ -11,7 +11,7 @@ if (!isset($_COOKIE['username'])) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo $row['avatar'], "<br><tr>" . $row['name'] . "<br><tr>" . $row['surname'] . " <br><tr>" . $row['email'] . "<br>";
+            echo $row['name'] . "<br><tr>" . $row['surname'] . " <br><tr>" . $row['email'] . "<br>";
         }
     } else {
         echo "0 результатов";

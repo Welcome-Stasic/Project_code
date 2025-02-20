@@ -14,19 +14,16 @@ if (isset($_COOKIE['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
+    <link rel="stylesheet" href="css/header_indeex.css">
 </head>
 
 <body>
-    <form action="application/registration.php">
-        <label for="registation">
-            <button href="application/registration.php">Регистрация</button>
-        </label>
-    </form>
-    <form action="application/auth.php">
-        <label for="auth">
-            <button href="application/auth.php">Авторизация</button>
-        </label>
-    </form>
+    <?php
+    include("patch/header_index.php")
+    ?>
+    <main>
+        <h1>Проект КОД</h1>
+    </main>
 </body>
 
 </html>

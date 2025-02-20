@@ -1,9 +1,9 @@
 <?php
 include("db/db.php");
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $email = !empty($_GET['email']) ? $conn->real_escape_string(trim($_GET['email'])) : null;
-    $password = !empty($_GET['password']) ? $conn->real_escape_string(trim($_GET['password'])) : null;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = !empty($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
+    $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
 
     $query = "SELECT * FROM users WHERE email = '$email'";
     $result = $conn->query($query);

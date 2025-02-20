@@ -13,7 +13,7 @@
         <img src="../assets/form_reg/logo.png" alt="код" width="100px" height="43px">
         <h1 id="form-title">Авторизация</h1>
 
-        <form action="auth.php" method="GET">
+        <form action="auth.php" method="POST">
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" required>
