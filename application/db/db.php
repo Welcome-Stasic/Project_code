@@ -1,5 +1,5 @@
 <?php
-$hostname = "MySQL-8.0";
+$hostname = "localhost";
 $username = "root";
 $password = "";
 $database = "auth";

@@ -1,6 +1,6 @@
 <?php
 include("../application/db/db.php");
-$q = "SELECT  FROM users WHERE id, name, surname, avatar, create_at";
+$q = "SELECT  FROM users WHERE id, name, surname, create_at";
 $rows = "SELECT FROM users WHERE id";
 if (!isset($_COOKIE['username'])) {
     header("Location: ../application/auth.php");
@@ -11,10 +11,10 @@ if (!isset($_COOKIE['username'])) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo $row['name'] . "<br><tr>" . $row['surname'] . " <br><tr>" . $row['email'] . "<br>";
+            echo $row['name'] . "<br><tr>" . $row['surname'] . " <br><tr>";
         }
     } else {
-        echo "0 результатов";
+        echo "0 результатов, странно как вы тут вообще оказались";
     }
 }
 ?>

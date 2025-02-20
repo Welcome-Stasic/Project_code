@@ -24,7 +24,7 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
     </form>
     <form action="../application/out.php">
         <label>
-            <button href="../application/out.php">Выйти с аккаунта</button>
+            <button href="../application/out.php">Выход</button>
         </label>
     </form>
     <form action="members.php">

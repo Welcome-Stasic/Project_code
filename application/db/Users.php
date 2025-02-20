@@ -1,7 +1,6 @@
 <?php
 include("db/db.php");
 
-// Проверяем, была ли форма отправлена
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = !empty($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
     $surname = !empty($_POST['surname']) ? $conn->real_escape_string(trim($_POST['surname'])) : null;
