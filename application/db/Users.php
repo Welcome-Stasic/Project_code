@@ -1,12 +1,13 @@
 <?php
 include("db/db.php");
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = !empty($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
     $surname = !empty($_POST['surname']) ? $conn->real_escape_string(trim($_POST['surname'])) : null;
     $email = !empty($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     $role = isset($_POST['role']) && in_array($_POST['role'], ['teacher', 'student']) ? $conn->real_escape_string(trim($_POST['role'])) : 'student';
+    $create_at = date('Y-m-d H:i:s');
 
     if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>
@@ -33,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO users (name, surname, email, password, created_at, role) VALUES ('$name', '$surname', '$email', '$hashed_password', NOW(), '$role')";
+    $query = $conn->prepare("INSERT INTO users (name, surname, email, password, created_at, role) VALUES (?, ?, ?, ?, ?, ?)");
+    $query->bind_param("ssssss", $name, $surname, $email, $hashed_password, $create_at, $role);
 
-    if ($conn->query($query)) {
+    if ($query->execute()) {
         $user_id = $conn->insert_id;
-
         setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 30 дней
         setcookie('username', $name, time() + (86400 * 30), "/"); // 30 дней
         setcookie('user_surname', $surname, time() + (86400 * 30), "/"); // 30 дней
@@ -78,4 +79,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
-?>
