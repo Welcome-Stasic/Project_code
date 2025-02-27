@@ -1,0 +1,20 @@
+
+#user-list {
+    width: 200px;
+    color: #000000;
+}
+#all-users {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#all-users li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #9598a3;
+    transition: background-color 0.3s ease;
+}
+#all-users li.selected {
+    background-color: #828591;
+    transition: background-color 0.3s ease;
+}

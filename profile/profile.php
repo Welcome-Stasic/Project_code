@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+include("../application/db/db.php");
 if (!isset($_COOKIE['username'])) {
     header("Location: ../application/auth.php");
     exit;
@@ -26,11 +25,6 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
     <form action="../application/out.php">
         <label>
             <button href="../application/out.php">Выход</button>
-        </label>
-    </form>
-    <form action="members.php">
-        <label>
-            <button href="members.php">Найти друзей</button>
         </label>
     </form>
     <form action="members.php">

@@ -55,6 +55,12 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `created_at`, `role`) VALUES
+(21, 'Станислав', 'Глумов', 'stanislav.glumov.2006@mail.ru', '$2y$10$EGPw2QJaBHr19FkZTpuhnO7V2Hd2EEwXtZPG3xDzHzmDwq2y6Amqy', '2025-02-20 11:09:19', 'student'),
+(22, 'Алёна', 'Калинина', 'Taras@mail.ru', '$2y$10$mVeIGc0rFKo8F1WcW.Gbz.JX.gCEtxYQhKpAcHfiW93/Ue6VmHJim', '2025-02-20 11:11:29', 'student'),
+(23, 'Антон', 'Мизев', 'Styopa@stepan.com', '$2y$10$XioEifRGnLRhLTGM3G4Xf.R46xACIt55sB0xKxd4U5DKiUwngVAkW', '2025-02-20 11:34:37', 'student'),
+(25, 'СТанисоав', 'фывфа', 'asd@asd.ru', '$2y$10$6lFLdNgtzkgi0t0nq0YopelQx6n3t1AuJ5oQqW5Tp3I1xZQSAP0Wi', '2025-02-24 17:28:09', 'teacher');
+
 --
 -- Индексы сохранённых таблиц
 --
