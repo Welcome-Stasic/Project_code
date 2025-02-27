@@ -6,7 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $surname = !empty($_POST['surname']) ? $conn->real_escape_string(trim($_POST['surname'])) : null;
     $email = !empty($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
-    $role = isset($_POST['role']) && in_array($_POST['role'], ['teacher', 'student']) ? $conn->real_escape_string(trim($_POST['role'])) : 'student';
+    $role = 'student';
+    $ran_id = rand(time(), 100000000);
     $create_at = date('Y-m-d H:i:s');
 
     if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -34,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = $conn->prepare("INSERT INTO users (name, surname, email, password, created_at, role) VALUES (?, ?, ?, ?, ?, ?)");
-    $query->bind_param("ssssss", $name, $surname, $email, $hashed_password, $create_at, $role);
+    $query = $conn->prepare("INSERT INTO users (personal_id, name, surname, email, password, created_at, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $query->bind_param("issssss", $ran_id, $name, $surname, $email, $hashed_password, $create_at, $role);
 
     if ($query->execute()) {
         $user_id = $conn->insert_id;

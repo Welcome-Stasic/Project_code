@@ -14,6 +14,7 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -25,6 +26,11 @@ echo "<h1>Добро пожаловать на ваш профиль, " . htmlsp
     <form action="../application/out.php">
         <label>
             <button href="../application/out.php">Выход</button>
+        </label>
+    </form>
+    <form action="members.php">
+        <label>
+            <button href="members.php">Найти друзей</button>
         </label>
     </form>
     <form action="members.php">

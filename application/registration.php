@@ -32,19 +32,6 @@
                     <label for="password">Пароль</label>
                     <input type="password" name="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="role" class="mouther">Выберите роль</label>
-                    <div class="radio-container">
-                        <div>
-                            <input type="radio" name="role" value="teacher" id="teacher" required>
-                            <label for="teacher" class="radio-label">Учитель</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="role" value="student" id="student" required>
-                            <label for="student" class="radio-label">Ученик</label>
-                        </div>
-                    </div>
-                </div>
                 <button type="submit" href="auth.php">Зарегистрироваться</button>
         </div>
         </form>
