@@ -36,9 +36,13 @@ if (!isset($_COOKIE['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактирование</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 
 <body>
+    <?php
+    include("../patch/header.php");
+    ?>
     <form action="edit.php" method="GET">
         <label>Редактировать имени и фамилии пользователя<br>
             <input type="text" name="new_name" placeholder="Введите новое имя"><br>

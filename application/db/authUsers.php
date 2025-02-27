@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (password_verify($password, $user['password'])) {
                 setcookie("username", $user['name'], time() + (86400 * 30), "/"); // 30 дней
+                setcookie("surname", $user['surname'], time() + (86400 * 30), "/");
                 setcookie("user_email", $user['email'], time() + (86400 * 30), "/"); // 30 дней
                 $alert_success = "Добро пожаловать, " . htmlspecialchars($user['name']) . "!";
                 echo "<script>
