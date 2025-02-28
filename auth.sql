@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 24 2025 г., 21:11
+-- Время создания: Фев 28 2025 г., 21:55
 -- Версия сервера: 5.7.39
 -- Версия PHP: 8.0.22
 
@@ -24,10 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `messages`
+-- Структура таблицы `groups`
 --
 
-CREATE TABLE `messages` (
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `group_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lesson_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `chat_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `groups`
+--
+
+INSERT INTO `groups` (`id`, `group_name`, `lesson_link`, `chat_link`) VALUES
+(1, 'Кф4', 'https://kodprogram.ktalk.ru/mxwnt4inb6xg', 'https://vk.me/join/R_I6lAfTbaP3t_zYSpu0GrX9g3w_TZD3evY='),
+(2, 'Кб2', 'https://kodprogram.ktalk.ru/agj8y5c2uurc', 'https://vk.me/join/AmpsvLGG3HEQyW9nGgiExGiUQ12J7tjjW/M=');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `message`
+--
+
+CREATE TABLE `message` (
   `id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
   `receiver_id` int(11) NOT NULL,
@@ -43,69 +64,79 @@ CREATE TABLE `messages` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `personal_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `role` enum('teacher','student') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'student'
+  `role` enum('teacher','student') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'student',
+  `group_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `users`
---
-
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `created_at`, `role`) VALUES
-(21, 'Станислав', 'Глумов', 'stanislav.glumov.2006@mail.ru', '$2y$10$EGPw2QJaBHr19FkZTpuhnO7V2Hd2EEwXtZPG3xDzHzmDwq2y6Amqy', '2025-02-20 11:09:19', 'student'),
-(22, 'Алёна', 'Калинина', 'Taras@mail.ru', '$2y$10$mVeIGc0rFKo8F1WcW.Gbz.JX.gCEtxYQhKpAcHfiW93/Ue6VmHJim', '2025-02-20 11:11:29', 'student'),
-(23, 'Антон', 'Мизев', 'Styopa@stepan.com', '$2y$10$XioEifRGnLRhLTGM3G4Xf.R46xACIt55sB0xKxd4U5DKiUwngVAkW', '2025-02-20 11:34:37', 'student'),
-(25, 'СТанисоав', 'фывфа', 'asd@asd.ru', '$2y$10$6lFLdNgtzkgi0t0nq0YopelQx6n3t1AuJ5oQqW5Tp3I1xZQSAP0Wi', '2025-02-24 17:28:09', 'teacher');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `messages`
+-- Индексы таблицы `groups`
 --
-ALTER TABLE `messages`
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `message`
+--
+ALTER TABLE `message`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `messages_ibfk_1` (`sender_id`),
-  ADD KEY `messages_ibfk_2` (`receiver_id`);
+  ADD KEY `messages_ibfk1` (`sender_id`),
+  ADD KEY `messages_ibfk2` (`receiver_id`);
 
 --
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD KEY `fk_group_id` (`group_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `messages`
+-- AUTO_INCREMENT для таблицы `groups`
 --
-ALTER TABLE `messages`
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `message`
+--
+ALTER TABLE `message`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Ограничения внешнего ключа таблицы `messages`
+-- Ограничения внешнего ключа таблицы `message`
 --
-ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`);
+ALTER TABLE `message`
+  ADD CONSTRAINT `messages_ibfk1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `messages_ibfk2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `fk_group_id` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
