@@ -82,6 +82,7 @@ header button:active {
     gap: 20px;
 }
 .content-wrapper_menu nav {
+    flex-direction: row;
     display: flex;
     gap: 20px;
 }
@@ -100,12 +101,19 @@ header button:active {
 .content-vibor_wrapper {
     display: none;
 }
+.unassign-students {
+    cursor: pointer;
+}
 @media (max-width: 885px) {
+    .content-wrapper_menu nav {
+        flex-direction: column;
+        display: flex;
+        gap: 20px;
+    }
     .content-vibor_wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px 0;
     }
     
     select {
@@ -212,6 +220,11 @@ header button:active {
     }
     .content-vibor_wrapper {
         display: inline;
+    }
+    .content-wrapper_menu {
+        display: flex;
+        flex-direction: row;
+        height: 200px;
     }
     .Group-content_vibor {
         display: none;

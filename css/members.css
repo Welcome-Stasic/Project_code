@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+.main_container {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.123);
+    width: 80%;
+    max-width: 800px;
+}
+
+h1 {
+    text-align: center;
+    color: #00aaff;
+    margin-bottom: 20px;
+}
+
+.users-list {
+    border-top: 1px solid #00aaff;
+}
+
+.user-item {
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.user-item:hover {
+    background-color: #e3ecec;
+}
+
+.user-item__name,
+.user-item__surname,
+.user-item__created-at {
+    margin: 5px 0;
+}
+
+hr {
+    border: 1px solid #00aaff;
+}
+
+.users-list__empty {
+    text-align: center;
+    color: #ff4d4d;
+    margin-top: 20px;
+}

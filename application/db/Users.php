@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 30 дней
         setcookie('username', $name, time() + (86400 * 30), "/"); // 30 дней
         setcookie('user_surname', $surname, time() + (86400 * 30), "/"); // 30 дней
+        setcookie('personal_id', $ran_id, time() + (86400 * 30), "/"); // 30 дней
         setcookie('user_email', $email, time() + (86400 * 30), "/"); // 30 дней
         setcookie('user_role', $role, time() + (86400 * 30), "/"); // 30 дней
 

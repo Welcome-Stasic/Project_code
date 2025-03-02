@@ -37,31 +37,30 @@ if (!isset($_COOKIE['username'])) {
     <title>Редактирование</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/edit.css">
 </head>
 
 <body>
-    <?php
-    include("../patch/header.php");
-    ?>
-    <form action="edit.php" method="GET">
-        <label>Редактировать имени и фамилии пользователя<br>
-            <input type="text" name="new_name" placeholder="Введите новое имя"><br>
-            <input type="text" name="new_surname" placeholder="Введите новую фамилию">
-            <input type="submit" value="Сохранить"><br>
-        </label>
-    </form>
-    <form action="setPassword.php" method="POST">
-        <label>Смена пароля<br>
-            <input type="password" name="oldPassword" placeholder="Введите старый пароль"><br>
-            <input type="password" name="newPassword" placeholder="Введите новый пароль"><br>
-            <input type="password" name="ValidNewPassword" placeholder="Подтвердите новый пароль">
-            <input type="submit" value="Сохранить">
-        </label>
-    </form>
-    <form action="profile.php">
-        <button href="profile.php">Перейти в профиль</button>
+    <?php include("../patch/header.php"); ?>
 
-    </form>
+    <div class="form-container">
+        <form action="edit.php" method="GET" class="edit-form">
+            <label class="form-label">Редактировать имени и фамилии пользователя<br>
+                <input type="text" name="new_name" placeholder="Введите новое имя" class="form-input"><br>
+                <input type="text" name="new_surname" placeholder="Введите новую фамилию" class="form-input"><br>
+                <input type="submit" value="Сохранить" class="form-submit"><br>
+            </label>
+        </form>
+
+        <form action="setPassword.php" method="POST" class="password-form">
+            <label class="form-label">Смена пароля<br>
+                <input type="password" name="oldPassword" placeholder="Введите старый пароль" class="form-input"><br>
+                <input type="password" name="newPassword" placeholder="Введите новый пароль" class="form-input"><br>
+                <input type="password" name="ValidNewPassword" placeholder="Подтвердите новый пароль" class="form-input"><br>
+                <input type="submit" value="Сохранить" class="form-submit">
+            </label>
+        </form>
+    </div>
 </body>
 
 </html>
