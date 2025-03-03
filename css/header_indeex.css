@@ -82,3 +82,57 @@ header button {
     font-size: 14px;
     font-weight: 400;
 }
+@media (max-width: 780px) {
+    .container--header{
+        margin: 0px 20px;
+    }
+    .Group-content_vibor button {
+        padding: 6px;
+    }
+    .burger-wrapper {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        width: 34px;
+        height: 34px;
+        border: solid 1px #8B8B8B;
+        border-radius: 50%;
+    }
+    .burger-wrapper div {
+        width: 18px;
+        height: 1.3px;
+        background-color: #8B8B8B;
+        transition: all 0.3s;
+    }
+    .burger-wrapper.active div:first-child {
+        position: absolute;
+        top: 45px;
+        transform: rotate(405deg) translate(5px, 5px);
+    }
+    .burger-wrapper.active div:last-child {
+        position: absolute;
+        top: 59px;
+        transform: rotate(-405deg) translate(5px, -5px); 
+    }
+    .Vhod {
+        display: none;
+    }
+    #menu {
+        display: none;
+        position: absolute;
+        top: 80px; 
+        right: 20px; 
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    #menu.show {
+        display: block; 
+        opacity: 1;
+    }
+}

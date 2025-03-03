@@ -1,6 +1,6 @@
 <?php
 include("../application/db/db.php");
-if (!isset($_COOKIE['username'])) {
+if (!isset($_['username'])) {
     header("Location: ../application/auth.php");
     exit;
 }
@@ -15,6 +15,7 @@ include("Getlink.php");
     <title><?php echo htmlspecialchars($_COOKIE['username']); ?></title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://app.allwidgets.ru/s/cookies/a2be9201-fa65-4a28-a901-271548c4eea6/"></script>
 </head>
 
 <body>

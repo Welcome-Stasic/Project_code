@@ -1,3 +1,10 @@
+<?php
+if (!isset($_COOKIE['personal_id'])) {
+    header("Location: ../application/auth.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

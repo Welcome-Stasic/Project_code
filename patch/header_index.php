@@ -20,11 +20,12 @@
             </div>
             <div class="Group-content_vibor">
                 <button class="first-group">Не распределён</button>
-                <img src="assets/icon/line.png" alt="выбор" width="8px"
-                    height="8px">
-                <button class="second-group">Не распределён</button>
             </div>
-            <div class="Vhod">
+            <div class="burger-wrapper burger" id="burger">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="Vhod" id="menu">
                 <form action="application/registration.php">
                     <label>
                         <button class="index-first_button" href="application/registration.php">Регистрация</button>
@@ -36,6 +37,25 @@
                     </form>
             </div>
         </div>
+        <script>
+            const burger = document.getElementById('burger');
+            const menu = document.getElementById('menu');
+
+            function toggleMenu() {
+                menu.classList.toggle('show');
+                burger.classList.toggle('active');
+            }
+            burger.addEventListener('click', function(event) {
+                event.stopPropagation();
+                toggleMenu();
+            });
+            document.addEventListener('click', function(event) {
+                if (menu.classList.contains('show') && !menu.contains(event.target) && !burger.contains(event.target)) {
+                    menu.classList.remove('show');
+                    burger.classList.remove('active');
+                }
+            });
+        </script>
     </header>
 </body>
 

@@ -1,14 +1,13 @@
 <?php
 include("../application/db/db.php");
 
-if (!isset($_COOKIE['username'])) {
+if (!isset($_COOKIE['personal_id'])) {
     header("Location: ../application/auth.php");
     exit;
 } else {
     $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
 ?>
-
     <!DOCTYPE html>
     <html lang="ru">
 
@@ -43,7 +42,6 @@ if (!isset($_COOKIE['username'])) {
     </body>
 
     </html>
-
 <?php
 }
 ?>

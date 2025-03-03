@@ -1,6 +1,6 @@
 <?php
 include("../application/db/db.php");
-if (!isset($_COOKIE['username'])) {
+if (!isset($_COOKIE['personal_id'])) {
     header('Location: ../application/auth.php');
     exit;
 }

@@ -2,7 +2,7 @@
 $id = $_COOKIE['user_id'];
 $new_name = isset($_GET['new_name']) ? htmlspecialchars($_GET['new_name']) : null;
 $new_surname = isset($_GET['new_surname']) ? htmlspecialchars($_GET['new_surname']) : null;
-if (!isset($_COOKIE['username'])) {
+if (!isset($_COOKIE['personal_id'])) {
     header("Location: ../application/auth.php");
     exit;
 } else {

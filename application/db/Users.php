@@ -40,12 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($query->execute()) {
         $user_id = $conn->insert_id;
-        setcookie('user_id', $user_id, time() + (86400 * 30), "/"); // 30 дней
-        setcookie('username', $name, time() + (86400 * 30), "/"); // 30 дней
-        setcookie('user_surname', $surname, time() + (86400 * 30), "/"); // 30 дней
-        setcookie('personal_id', $ran_id, time() + (86400 * 30), "/"); // 30 дней
-        setcookie('user_email', $email, time() + (86400 * 30), "/"); // 30 дней
-        setcookie('user_role', $role, time() + (86400 * 30), "/"); // 30 дней
+        $_SESSION['user_id'] = $user_id;
+        setcookie('user_id', $user_id, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
+        setcookie('username', $name, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
+        setcookie('user_surname', $surname, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
+        setcookie('personal_id', $ran_id, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
+        setcookie('user_email', $email, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
+        setcookie('user_role', $role, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
 
         echo "<script>
             let timerInterval;

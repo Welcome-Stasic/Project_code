@@ -1,40 +1,46 @@
 <?php
-$personal_id = $_COOKIE['personal_id'];
-
+session_start();
 include("../application/db/db.php");
+if (isset($_SESSION['personal_id']) && !empty($_SESSION['personal_id'])) {
+    $personal_id = $_SESSION['personal_id'];
+    $sql_role = "SELECT role FROM users WHERE personal_id = ?";
+    if ($stmt_role = $conn->prepare($sql_role)) {
+        $stmt_role->bind_param("i", $personal_id);
+        $stmt_role->execute();
+        $stmt_role->bind_result($role);
+        $stmt_role->fetch();
+        $stmt_role->close();
+    } else {
+        echo "Ошибка подготовки запроса для роли.";
+        exit();
+    }
+    $sql_group = "SELECT g.lesson_link, g.group_name 
+                  FROM users u 
+                  JOIN `groups` g ON u.group_id = g.id 
+                  WHERE u.personal_id = ?";
+    if ($stmt_group = $conn->prepare($sql_group)) {
+        $stmt_group->bind_param("i", $personal_id);
+        $stmt_group->execute();
+        $stmt_group->bind_result($lesson_link, $group_name);
+        if (!$stmt_group->fetch()) {
+            $group_name = "???";
+        }
+        $stmt_group->close();
+    } else {
+        echo "Ошибка подготовки запроса для группы: " . $conn->error;
+        exit();
+    }
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql_role = "SELECT role FROM users WHERE personal_id = ?";
-$stmt_role = $conn->prepare($sql_role);
-$stmt_role->bind_param("i", $personal_id);
-$stmt_role->execute();
-$stmt_role->bind_result($role);
-$stmt_role->fetch();
-$stmt_role->close();
-
-$sql_group = "SELECT g.lesson_link, g.group_name 
-              FROM users u 
-              JOIN groups g ON u.group_id = g.id 
-              WHERE u.personal_id = ?";
-$stmt_group = $conn->prepare($sql_group);
-$stmt_group->bind_param("i", $personal_id);
-$stmt_group->execute();
-$stmt_group->bind_result($lesson_link, $group_name);
-if ($stmt_group->fetch()) {
+    $conn->close();
 } else {
+    $role = 'student';
     $group_name = "???";
 }
-$stmt_group->close();
-$conn->close();
 ?>
 
 <html>
 
-<head>
-</head>
+<head></head>
 
 <body>
     <header>
@@ -47,8 +53,6 @@ $conn->close();
                     <span><?php echo htmlspecialchars($_COOKIE['username']) . " " . htmlspecialchars($_COOKIE['user_surname']) ?></span>
                     <span>ПАЗЛ/КОД | ID: <?php echo htmlspecialchars($_COOKIE['personal_id']) ?></span>
                 </div>
-                <div class="Group">
-                </div>
             </div>
             <div class="content-vibor_wrapper">
                 <select>
@@ -59,7 +63,6 @@ $conn->close();
             <div class="Group-content_vibor">
                 <button class="first-group admin"><?php echo $group_name; ?></button>
             </div>
-
 
             <div class="burger-wrapper burger" id="burger">
                 <div></div>
@@ -85,23 +88,33 @@ $conn->close();
             const menu = document.getElementById('menu');
             const avatar = document.getElementById('avatar');
             const admin = document.getElementById('admin');
-            avatar.addEventListener('click', function() {
-                window.location.href = 'profile.php';
-            });
-            admin.addEventListener('click', function() {
-                window.location.href = 'admin_Group.php';
-            });
+
+            if (avatar) {
+                avatar.addEventListener('click', function() {
+                    window.location.href = 'profile.php';
+                });
+            }
+
+            if (admin) {
+                admin.addEventListener('click', function() {
+                    window.location.href = 'admin_Group.php';
+                });
+            }
 
             function toggleMenu() {
                 menu.classList.toggle('show');
                 burger.classList.toggle('active');
             }
-            burger.addEventListener('click', function(event) {
-                event.stopPropagation();
-                toggleMenu();
-            });
+
+            if (burger) {
+                burger.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    toggleMenu();
+                });
+            }
+
             document.addEventListener('click', function(event) {
-                if (menu.classList.contains('show') && !menu.contains(event.target) && !burger.contains(event.target)) {
+                if (menu && menu.classList.contains('show') && !menu.contains(event.target) && !burger.contains(event.target)) {
                     menu.classList.remove('show');
                     burger.classList.remove('active');
                 }

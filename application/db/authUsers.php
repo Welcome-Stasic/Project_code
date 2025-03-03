@@ -1,86 +1,48 @@
 <?php
 include("db/db.php");
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
     $password = !empty($_POST['password']) ? trim($_POST['password']) : null;
 
+    if ($email && $password) {
+        $query = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($query);
 
-    $query = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($query);
+        if ($stmt) {
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-    if ($stmt) {
-        $stmt->bind_param("s", $email);
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
 
-        $stmt->execute();
+                if (password_verify($password, $user['password'])) {
+                    setcookie("username", $user['name'], time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
+                    setcookie("user_surname", $user['surname'], time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
+                    setcookie('personal_id', $user['personal_id'], time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
+                    setcookie("user_email", $user['email'], time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
 
-        $result = $stmt->get_result();
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['personal_id'] = $user['personal_id'];
+                    $_SESSION['username'] = $user['name'];
+                    $_SESSION['user_surname'] = $user['surname'];
+                    $_SESSION['user_email'] = $user['email'];
 
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-
-            if (password_verify($password, $user['password'])) {
-                setcookie("username", $user['name'], time() + (86400 * 30), "/"); // 30 дней
-                setcookie("user_surname", $user['surname'], time() + (86400 * 30), "/");
-                setcookie('personal_id', $user['personal_id'], time() + (86400 * 30), "/"); // 30 дней
-                setcookie("user_email", $user['email'], time() + (86400 * 30), "/"); // 30 дней
-                $alert_success = "Добро пожаловать, " . htmlspecialchars($user['name']) . "!";
-                echo "<script>
-                let timerInterval;
-                Swal.fire({
-                    icon: 'success',
-                    title: '$alert_success',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading();
-                        const timer = Swal.getPopup().querySelector('b');
-                        timerInterval = setInterval(() => {
-                        }, 100);
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval);
-                        window.location.href = '../profile/profile.php';
-                    }
-                });
-                </script>";
+                    $alert_success = "Добро пожаловать, " . htmlspecialchars($user['name']) . "!";
+                } else {
+                    $alert_error = "Ой, Неверный пароль(";
+                }
             } else {
-                echo "<script>
-                Swal.fire({
-                    title: 'Ой, Неверный пароль(',
-                    icon: 'error',
-                    showClass: {
-                        popup: `
-                            animate__animated
-                            animate__fadeInUp
-                            animate__faster
-                        `
-                    },
-                    hideClass: {
-                        popup: `
-                            animate__animated
-                            animate__fadeOutDown
-                            animate__faster
-                        `
-                    }
-                });
-                </script>";
+                $alert_error = "Пользователь не найден!";
             }
-        } else {
-            echo "<script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Ооой...',
-                text: 'Пользователь не найден!',
-                footer: '<a href=\"../registration.php\">Похоже пора зарегистрироваться</a>',
-            });
-            </script>";
-        }
 
-        $stmt->close();
+            $stmt->close();
+        } else {
+            $alert_error = "Ошибка при подготовке запроса: " . $conn->error;
+        }
     } else {
-        echo "Ошибка при подготовке запроса: " . $conn->error;
+        $alert_warning = "Пожалуйста, заполните все поля.";
     }
 }
-
-$conn->close();
