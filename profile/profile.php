@@ -17,10 +17,11 @@ if (!isset($_COOKIE['personal_id'])) {
     <link rel="stylesheet" href="../css/style.css">
 
     <script src="https://app.allwidgets.ru/s/cookies/a2be9201-fa65-4a28-a901-271548c4eea6/"></script>
+    <script src="https://cdn.jsdelivr.net/gh/samgozman/YoptaScript/yopta.js"></script>
 </head>
 
 <body>
-    <?php include("/home/s/stanis2c/stanis2c.beget.tech/public_html/patch/header.php")
+    <?php include("../patch/header.php")
     ?>
     <main>
 
@@ -175,13 +176,13 @@ if (!isset($_COOKIE['personal_id'])) {
             </div>
         </div>
         <script>
-            const cardconnectleesson = document.getElementById('card-connect-leesson');
-            const linkchat = document.getElementById('card-chat-group');
-            cardconnectleesson.addEventListener('click', function() {
-                window.location.href = '<?php echo $lesson_link ?>';
+            Слышь, картаУрок = документ.ЗахватьЭлементПоИд('card-connect-leesson');
+            Слышь, ссылкаЧат = документ.ЗахватьЭлементПоИд('card-connect-leesson');
+            картаУрок.Слушай("Чё_как", () => {
+                окно.Локация.Хата = '<?php echo $lesson_link ?>';
             });
-            linkchat.addEventListener('click', function() {
-                window.location.href = '<?php echo $chat_link ?>';
+            ссылкаЧат.Слушай("Чё_как", () => {
+                окно.Локация.Хата = '<?php echo $chat_link ?>';
             });
         </script>
     </main>
