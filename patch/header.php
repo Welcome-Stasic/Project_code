@@ -54,12 +54,6 @@ if (isset($_SESSION['personal_id']) && !empty($_SESSION['personal_id'])) {
                     <span>ПАЗЛ/КОД | ID: <?php echo htmlspecialchars($_COOKIE['personal_id']) ?></span>
                 </div>
             </div>
-            <div class="content-vibor_wrapper">
-                <select>
-                    <option>Кф4</option>
-                    <option>Кб5</option>
-                </select>
-            </div>
             <div class="Group-content_vibor">
                 <button class="first-group admin"><?php echo $group_name; ?></button>
             </div>
@@ -76,6 +70,7 @@ if (isset($_SESSION['personal_id']) && !empty($_SESSION['personal_id'])) {
                     <a href="../profile/edit.php">Редактировать профиль</a>
                     <a href="../profile/members.php">Найти друзей</a>
                 </nav>
+                <button id="themeToggle">Переключить тему</button>
                 <form action="../application/out.php">
                     <label>
                         <button href="../application/out.php">Выход</button>
@@ -117,6 +112,15 @@ if (isset($_SESSION['personal_id']) && !empty($_SESSION['personal_id'])) {
                 if (menu && menu.classList.contains('show') && !menu.contains(event.target) && !burger.contains(event.target)) {
                     menu.classList.remove('show');
                     burger.classList.remove('active');
+                }
+            });
+
+            document.getElementById('themeToggle').addEventListener('click', function() {
+                const currentTheme = document.body.className;
+                if (currentTheme === 'light-theme') {
+                    document.body.className = 'dark-theme';
+                } else {
+                    document.body.className = 'light-theme';
                 }
             });
         </script>

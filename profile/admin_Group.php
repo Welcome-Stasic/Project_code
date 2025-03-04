@@ -50,6 +50,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ панель</title>
+    <link rel="icon" href="../assets/learning_8130157.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/admin_panel.css">
     <link rel="stylesheet" href="../css/header.css">

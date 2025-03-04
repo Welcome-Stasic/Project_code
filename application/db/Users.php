@@ -41,43 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($query->execute()) {
         $user_id = $conn->insert_id;
         $_SESSION['user_id'] = $user_id;
-        setcookie('user_id', $user_id, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
-        setcookie('username', $name, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
-        setcookie('user_surname', $surname, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
-        setcookie('personal_id', $ran_id, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
-        setcookie('user_email', $email, time() + (86400 * 30), "/",  ".stanis2c.beget.tech", false, true);
-        setcookie('user_role', $role, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, true);
-
-        echo "<script>
-            let timerInterval;
-            Swal.fire({
-                icon: 'success',
-                title: 'Добро пожаловать!',
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading();
-                    const timer = Swal.getPopup().querySelector('b');
-                    timerInterval = setInterval(() => {}, 100);
-                },
-                willClose: () => {
-                    clearInterval(timerInterval);
-                    window.location.href = '../profile/profile.php';
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer');
-                }
-            });
-        </script>";
+        setcookie('user_id', $user_id, time() + (86400 * 30), "/");
+        setcookie('username', $name, time() + (86400 * 30), "/");
+        setcookie('user_surname', $surname, time() + (86400 * 30), "/");
+        setcookie('personal_id', $ran_id, time() + (86400 * 30), "/");
+        setcookie('user_email', $email, time() + (86400 * 30), "/");
+        setcookie('user_role', $role, time() + (86400 * 30), "/");
+        $alert_success = "Добро пожаловать";
     } else {
-        $alert_error_connect = $conn->error;
-        echo "<script>
-            Swal.fire({
-                icon: 'error',
-                text: 'Ошибка: " . addslashes($alert_error_connect) . "',
-            });
-        </script>";
+        $alert_error = $conn->error;
     }
 }
 

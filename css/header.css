@@ -226,9 +226,6 @@ header button:active {
         flex-direction: row;
         height: 200px;
     }
-    .Group-content_vibor {
-        display: none;
-    }
     .content-wrapper_menu {
         display: none;
     }

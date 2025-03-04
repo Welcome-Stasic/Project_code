@@ -8,6 +8,7 @@ if (!isset($_COOKIE['personal_id'])) {
     $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
 ?>
+
     <!DOCTYPE html>
     <html lang="ru">
 
@@ -15,6 +16,7 @@ if (!isset($_COOKIE['personal_id'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Список пользователей</title>
+        <link rel="icon" href="../assets/learning_8130157.png">
         <link rel="stylesheet" href="../css/members.css">
     </head>
 
@@ -42,6 +44,7 @@ if (!isset($_COOKIE['personal_id'])) {
     </body>
 
     </html>
+
 <?php
 }
 ?>

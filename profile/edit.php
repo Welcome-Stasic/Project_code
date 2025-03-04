@@ -7,23 +7,12 @@ if (!isset($_COOKIE['personal_id'])) {
     exit;
 } else {
     if (!isset($_GET['new_name'])) {
-        echo "<script>
-        Swal.fire({
-            icon: 'error',
-            text: 'Заполните оба поля',
-        });
-    </script>";
+        $alert_error = "Заполните все поля!";
     } else {
-        echo "<script>
-        Swal.fire({
-            icon: 'success',
-            text: 'Вы изменили имя на '$new_name'',
-            text: 'Вы изменили фамилию на '$new_surname'',
-        });
-    </script>";
+        $alert_success = "Вы успешно сменили данные!";
         $query = "UPDATE users SET name, surname = '$new_name', '$new_surname' WHERE id = '$id'";
-        setcookie('username', $new_name, time() + (86400 * 30), "/");
-        setcookie('user_surname', $new_surname, time() + (86400 * 30), "/");
+        setcookie('username', $new_name, time() + (86400 * 30), "/", ".stanis2c.beget.tech", false, false);
+        setcookie('user_surname', $new_surname, time() + (86400 * 30), "/", ".stanis2c.beger.tech", false, false);
     }
 }
 
@@ -35,6 +24,7 @@ if (!isset($_COOKIE['personal_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Редактирование</title>
+    <link rel="icon" href="../assets/learning_8130157.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/edit.css">
@@ -64,3 +54,22 @@ if (!isset($_COOKIE['personal_id'])) {
 </body>
 
 </html>
+<?php
+if (isset($alert_error)) {
+    echo "<script> 
+ Swal.fire({
+ icon: 'error',
+ text: 'Заполните оба поля!',
+ });
+ </script>
+ ";
+}
+if (isset($alert_success)) {
+    echo "<script>
+     Swal.fire ({
+         icon: 'success',
+         text: 'Вы изменили имя на $new_name',
+         text: 'Вы изменили фамилию на $new_surname';
+     });
+     </script>";
+}

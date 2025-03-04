@@ -1,3 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 * {
     margin: 0;
+}
+
+body{
+    font-family: Inter;
+}
+
+body.light-theme{
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-theme{
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.card-connect-leessons {
+    position: relative;
+    width: 26vw;
+    height: 210px;
+    background: linear-gradient(142.65deg, #3496FF 47.13%, #1170DC 104.08%);
+    border: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    margin-bottom: 20px;
+    transition: 0.2s ease-in-out;
+    }
+    .card-connect-leessons:hover {
+        transform: scale(1.04);
+    }
+.title-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.card-video-lessons{}
+
+.container_messanger {
+    display: flex;
+}
+.card-chat-group {
+    width: 168px;
+    height: 51px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-width: 1px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border: solid 1px #DDE2E4;
+    display: flex;
+    gap: 0px;
+
+    a {
+        color: #000;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    }
+.gorizontal {
+    border: 0.3px solid;
+    border-image-source: linear-gradient(359.98deg, #FFFFFF 31.65%, rgba(255, 255, 255, 0) 107.63%);
+}
+
+.circle-blue {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-bottom-right-radius: 25px;
+}
+.card-progress {
+    margin-top: 20px;
+    position: relative;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 26vw;
+    height: 210px;
+    background: linear-gradient(305.31deg, #FF6534 -3.51%, #FFD600 127.98%);
+    border: none;
+    transition: 0.2s ease-in-out;
+    }
+    .card-progress:hover {
+        transform: scale(1.04);
+    }
+.second-container {
+    margin-top: -20px;
+}
+.sum {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.subtitle {
+    font-size: 10px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.positions-place{
+    display: flex;
+    gap: 15px;
+    margin: 30px 0px 0px 20px;
+}
+
+.position-in-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 142px;
+    height: 34px;
+    border: 1px solid #fff;
+    border-radius: 90px;
+    gap: 16px;
+    z-index: 2;
+}
+.text-position {
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    position: relative;
+    left: 10px;
+}
+.circle-white {
+    font-size: 14px;
+    color: #FF6534;
+    background-color: #ffffff;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 34px;
+    text-align: center;
+}
+
+.position-all-raite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 142px;
+    height: 34px;
+    border: 1px solid #fff;
+    border-radius: 90px;
+    gap: 16px;
+    z-index: 2;
+}
+.card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+}
+.container {
+    margin-top: 54px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.card-video-lessons {
+    width: 13vw;
+    height: 128px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border: solid 1px #DDE2E4;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    box-shadow: 0px 24px 52.3px -27px #D3D3D3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &:first-child {
+        a {
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+    }
+}
+.icon_video_lessens {
+    width: 55px;
+    height: 55px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(142.65deg, #3496FF 47.13%, #1170DC 104.08%);
+}
+.reas {
+    margin-left: auto;
+}
+.circle-orange {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-bottom-right-radius: 25px;
+}
+.card-active-raite {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    min-width: 18vw;
+    width: 26vw;
+    height: 210px;
+    background: linear-gradient(118.95deg, #A57AFF -7.67%, #8205FF 98.18%);
+    border: none;
+    position: relative;
+    transition: 0.2s ease-in-out;
+    }
+    .card-active-raite:hover {
+        transform: scale(1.04);
+    }
+.circle-purple {
+    border-bottom-right-radius: 25px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+.achiv-title {
+    margin: 0;
+}
+.achivments {
+    margin-left: 20px;
+    padding-top: 20px;
+    color: #fff;
+}
+.achiv-subtitle {
+    font-size: 10px;
+    font-weight: 400;
+    margin: 5px;
+}
+
+.circles-achiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 49px;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.circle-achivments {
+    margin-left: -5px;
+    width: 49px;
+    height: 49px;
+    left: 500px;
+    bottom: 400px;
+    border-radius: 49px;
+    border: 0.41px solid var(--white-100, #FFFFFF);
+    backdrop-filter: blur(5.5px)
+}
+
+.card-raite{
+    width: 26vw;
+    height: 136px;
+    margin-top: 20px;
+    border: 1px solid #DDE2E4;
+    border-radius: 25px;
+}
+.statistics {
+    margin: 0px 20px;
+    padding: 10px 0px;
+}
+.title-raite{
+    font-size: 12px;
+    font-weight: 400;
+    margin: 10px 20px;
+}
+
+.block-sum{
+    width: 63px;
+    height: 27px;
+    padding: 15px;
+    margin: 30px 20px;
+    border-radius: 20px;
+    background: linear-gradient(313.47deg, #FF6534 0.96%, #FFD600 130.51%);
+    color: #fff;
+    text-align: center;
+}
+
+.block-procent{
+    width: 63px;
+    height: 27px;
+    padding: 15px;
+    margin: -87px 130px;
+    border-radius: 20px;
+    background: linear-gradient(313.47deg, #FF6534 0.96%, #FFD600 130.51%);
+    color: #fff;
+    text-align: center;
+}
+
+.scores{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.descr{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.up{
+    position: relative;
+    bottom: 20px;
+    left: 35px;
+}
+
+.down{
+    position: relative;
+    bottom: 20px;
+    left: 35px;
+    transform: rotateX(160deg);
+}
+
+.pos-rait{
+    padding: 8px;
+}
+
+.procent{
+    position: relative;
+}
+
+.date{
+    font-size: 12px;
+    position: relative;
+    bottom: 18px;
+}
+
+.plus-procent{
+    font-size: 12px;
+    font-weight: 400;
+    position: relative;
+    bottom: 1px;
+}
+
+.layers-list-achivments{
+    margin-top: 30px;
+}
+
+.achiv-month{
+    width: 23.3vw;
+    height: 55px;
+    padding: 20px;
+    margin-top: -15px;
+    background-color: #fff;
+    border: 1px solid #DDE2E4;
+    border-radius: 12px;
+}
+
+.achiv-checked{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 1300px) {
+    .container_messanger{
+        flex-direction: column;
+    }
+    
+}
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        margin: 0px 10px;
+        margin-top:50px;
+        align-items: center;
+    }
+    .content-wrapper_menu {
+        height: 230px;
+    }
+    .container_messanger {
+        margin-bottom: 20px;
+    }
+    .card-video-lessons {
+        width: 295px;
+        height: 75px;
+        flex-direction: row;
+        align-items: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-width: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+    }
+    .container_messanger {
+        flex-direction: column;
+    }
+    .achiv-month {
+        width: 315px;
+    }
+    .card-chat-group {
+        width: 295px;
+        height: 75px;
+        flex-direction: row;
+        align-items: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-width: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+    }
+    .card-container {
+        width: 2200px;
+        justify-content: space-between;
+    }
+    .card-connect-leessons {
+        width: 335px;
+        height: 140px;
+    
+    }
+    .card-active-raite {
+        width: 335px;
+        height: 140px;
+    }
+    .card-progress {
+        width: 335px;
+        height: 140px;
+    }
+    .circles-achiv {
+        margin-top: 10px;
+    }
+    .circle-achivments {
+        width: 35px;
+        height: 35px;
+    }
+
+    .card-raite{
+        width: 335px;
+    }
+    .third-container{
+        margin-top: 30px;
+    }
+
+    .achiv-month{
+        width: 293px;
+    }
+
+    .achiv-checked{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

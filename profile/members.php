@@ -11,7 +11,8 @@ if (!isset($_COOKIE['personal_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Друзья</title>
+    <link rel="icon" href="../assets/learning_8130157.png">
     <link rel="stylesheet" href="../css/header.css">
 </head>
 
