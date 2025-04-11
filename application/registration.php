@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = !empty($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
     $password = !empty($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     $role = 'student';
-    $ran_id = rand(time(), 100000000);
+    $ran_id = random_int(1, 100000000);
     $create_at = date('Y-m-d H:i:s');
 
     if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
